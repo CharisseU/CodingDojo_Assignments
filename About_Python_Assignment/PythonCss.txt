@@ -1,0 +1,54 @@
+*{
+  margin: 0px;
+  padding: 0px;
+}
+
+#header{
+  width: 970px;
+  height: 150px;
+  border: 5px solid black;
+  background: -webkit-linear-gradient(white 50%, blue 50%)
+}
+
+  #header img{
+    height: 100px;
+  }
+
+#top_header{
+  display: inline-block;
+  height: 45px;
+  width: 798px:
+  margin-bottom: 10px;
+  font-size: 50px;
+  vertical-align: top;
+  margin-top: 30px;
+}
+
+#net{
+  color: blue;
+}
+
+#bottom_header{
+  height: 110px;
+  color: white;
+  margin-bottom: 15px;
+  font-size: 30px
+}
+
+#navbar{
+  width: 194px;
+  height: 194px;
+  border: 5px solid black;
+}
+© 2019 GitHub, Inc.
+Terms
+Privacy
+Security
+Status
+Help
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About
