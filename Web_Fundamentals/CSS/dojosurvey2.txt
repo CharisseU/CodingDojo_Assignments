@@ -1,0 +1,72 @@
+rom flask import Flask, render_template, request, redirect, session
+app = Flask(__name__)
+app.secret_key = 'ThisIsSecret'
+
+@app.route('/')
+def index():
+    option_list = ['San Jose', 'New York', 'Seattle']
+    language_list = ['Python', 'PHP', 'Javascript']
+    return render_template('index.html', option_list=option_list, language_list=language_list)
+
+@app.route('/create', methods=['POST'])
+def create_user():
+    session['name'] = request.form['name']
+    session['location'] = request.form['location']
+    session['language'] = request.form['language']
+    session['comment'] = request.form['comment']
+    return redirect('/process')
+
+@app.route('/process')
+def show_user():
+    return render_template('results.html')
+
+app.run(debug=True)
+
+
+<!Doctype html>
+<html>
+    <head>
+        <title>Form test index</title>
+    </head>
+    <body>
+        <h1>Survey</h1>
+            <form action='/create' method='post'>
+                Your Name: <input type='text' name='name'/><br/>
+                Dojo location:
+                    <select name='location'>
+                        {% for i in option_list %}
+                            <option name="{{ i }}">{{ i }}</option>
+                        {% endfor %}
+                    </select> <br/>
+                Favorite Language:
+                    <select name='language'>
+                        {% for j in language_list %}
+                            <option name="{{ j }}">{{ j }}</option>
+                        {% endfor %}
+                    </select> <br/>
+                Comment: <textarea rows="4" cols="50" name='comment'></textarea> <br/>
+                <input type='submit' value='Submit'>
+            </form>
+    </body>
+</html>
+
+
+
+
+
+<!Doctype html>
+<html>
+<head>
+    <title>Results of survey</title>
+</head>
+<body>
+    <h1>Submitted info:</h1>
+    <p>{{session['name']}}</p>
+    <p>{{session['location']}}</p>
+    <p>{{session['language']}}</p>
+    <p>{{session['comment']}}</p>
+     <form action='/'>
+        <button>Go back</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Internet</title>
+        <meta name="description" content="The Internet project for Coding Dojo.">
+        <link rel="stylesheet" type="text/css" href="Internet_AssignmentFinalCss.css">
+    </head>
+    <body>
+        <header>
+            <img src="globe.png" alt="An icon of the globe.">
+            <h1>The Internet</h1>
+            <h2>The World Wide Web</h2>
+        </header>
+        <div id="main">
+            <div id="sidebar">
+                <div id="top">
+                    <h4>So, what's an <span class="red">Internet?</span></h4>
+                    <p>An <span class="blue">Inter</span>connected <span class="blue">Net</span>work of computers all around the world!</p>
+                    <button class="bluebutton">Watch a video</button><br>
+                    <button class="orangebutton">More resources</button><br>
+                </div>
+                <div id="ad">
+                    Reinvent your career in just 14 weeks<br>
+                    <img src="ninja.png" alt="Image of a ninja."><br>
+                    <button class="adbutton">Learn More <span class="one">&#8250;</span><span class="two">&#8250;</span><span class="three">&#8250;</span></button>
+                </div>
+            </div><!--
+            --><div id="content">
+                <div id="upper">
+                    <div id="dns">
+                        <img src="home.png" alt="home icon"> <span class="blue">DNS</span>
+                    </div><!--
+                    --><div id="contact">
+                        <img src="phone.png" alt="phone icon">
+                        <p>Mon - Fri 9 a.m. - 5p.m. (EST)<br>
+                        <span class="number">855.967.3787</span><br>
+                        International +1.617.963.05555</p>
+                    </div>
+                </div>
+                <div id="maincontent">
+                    <h3>Clients and Servers</h3>
+                    <p>Computers connected to the <a href="">Web</a> are called <b>clients</b> and <b>servers</b>.</p>
+                    <ul>
+                        <li><a href="">Clients</a> are the typical Web user's Internet-connected devices (for example, your computer connected to your Wi-Fi, or your phone connected to your mobile network) and <a href="">Web-accessing software</a> available on those devices (usually a web browser like Firefox or Chrome).</li>
+                        <li><a href="">Servers</a> are computers that store <a href="">webpages</a>, <a href="">sites</a>, or <a href="">apps</a>. When a client device wants to access a webpage, a copy of the webpage is downloaded from the server onto the client machine to be displayed in the user's web browser.</li>
+                    </ul>
+                    <img src="client_server.jpg" alt="Diagram of server and client relationship.">
+                    <h3> So What Actually Happens?</h3>
+                    <ol>
+                        <li>The browser goes to the <a href="">DNS server</a> and finds the real address of the <a href="">server</a> that the website lives on.</li>
+                        <li>The browser sends an <a href="">HTTP request</a> message to the server asking it to send a copy of the website to the client.</li>
+                        <li>If the server approves the client's request, the server sends the client a <a href="">"200 OK" message</a>, which means "Permission granted! Here you go!", and then starts sending the website's files to the browser as a series of small chunks.</li>
+                        <li>The broswer assembles the small chunks into a complete website and displays it to you!</li>
+                    </ol>
+                    <div id="bigthree">
+                        <img src="html.png" alt="HTML, CSS, and JavaScript">
+                        <div id="text">
+                            <h3>The Big 3 - HTML, CSS, JavaScript</h3>
+                            <p>Whiles the server can process information in many different languages, the files that they serve to the client are <i>always</i> going to be some combination of HTML, CSS, and JavaScript!</p>
+                            <p>Learn more about the Big 3 <a href="">here</a>!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

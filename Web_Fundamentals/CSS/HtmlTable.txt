@@ -1,0 +1,169 @@
+from flask import Flask, render_template
+app = Flask(__name__)
+
+@app.route('/')
+def index():
+    sinf= (
+       {'name' : 'Michael', 'age' : 35},
+       {'name' : 'John', 'age' : 30 },
+       {'name' : 'Mark', 'age' : 25},
+       {'name' : 'KB', 'age' : 27}
+    );
+    for x in sinf:
+      print(x['name'],x['age'])
+
+    users = (
+       {'first_name' : 'Michael ', 'last_name' :'Choi' },
+       {'first_name' : 'John ', 'last_name' : 'Supsupin' },
+       {'first_name' : 'Mark ', 'last_name' : 'Guillen'},
+       {'first_name' : 'KB ', 'last_name' : 'Tonel'}
+    );
+    for x in users:
+      print(x['first_name'],x['last_name'])
+     
+
+    return render_template("index.html", users = users)
+    
+if __name__=="__main__":
+    app.run(debug=True)
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{url_for('static',filename='styles.css')}}">
+    
+    
+    
+
+
+    
+    <title>HTML Table</title>
+    
+</head>
+<h1 id="ply">My HTML Table using Foundation</h1>
+<body>
+        <table class="responsive-card-table unstriped">
+          <thead>
+            <tr>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Full Name</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for x in users: %}
+            <tr>
+              <td data-label="First Name">{{ x['first_name'] }}</td>
+              <td data-label="Last Name">{{ x['last_name'] }}</td>
+              <td data-label="Full Name">{{ x['first_name']+ x['last_name'] }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+</body>
+
+</html>
+            
+ * {
+    border-color: 1px solid blue;
+    margin: 0;
+    padding: 0;
+     
+}
+
+#ply{
+    font-family: Corporate Logo Bold;
+    color: red;
+    font-size: 70px;
+    margin-left: 176px;
+    margin-top: 40px;
+}
+
+
+.responsive-card-table {
+  width: 536px;
+  border-collapse: collapse;
+  margin-left: 179px;
+  margin-top: 61px;
+  height: 200px;
+}
+
+.responsive-card-table.unstriped tbody {
+  background-color: transparent;
+}
+
+.responsive-card-table th {
+  background-color: #e6e6e6;
+}
+
+.responsive-card-table tr,
+.responsive-card-table th,
+.responsive-card-table td {
+  border: 1px solid #0a0a0a;
+  color: blue;
+  text-align: center;
+}
+
+@media screen and (max-width: 640px) {
+  .responsive-card-table {
+    
+  }
+  .responsive-card-table thead tr {
+    position: absolute;
+    top: -9999em;
+    left: -9999em;
+  }
+  .responsive-card-table tr {
+    border: 1px solid #0a0a0a;
+    display: block;
+  }
+  .responsive-card-table tr + tr {
+    margin-top: 1.5rem;
+  }
+  .responsive-card-table td {
+    border: none;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-justify-content: flex-start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
+    border-bottom: 1px solid #0a0a0a;
+    padding-left: 50%;
+    position: relative;
+  }
+  .responsive-card-table td:before {
+    content: attr(data-label);
+    display: inline-block;
+    font-weight: bold;
+    line-height: 1.5;
+    margin-left: -100%;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+  }
+  .responsive-card-table td:after {
+    content: '';
+    position: absolute;
+    background: #e6e6e6;
+    width: 45%;
+    height: 95%;
+    left: 1px;
+    top: 1px;
+    z-index: 0;
+  }
+}           
+
+              

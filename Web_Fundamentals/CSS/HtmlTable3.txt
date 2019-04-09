@@ -1,0 +1,99 @@
+from flask import Flask, render_template  # added render_template!
+app = Flask(__name__)                     
+    
+@app.route('/')                           
+def index():
+    return render_template("index.html")
+    
+student_info = [
+          {'first_name' : 'Michael', 'last_name' : 'Choi'},
+          {'first_name' : 'John', 'last_name' : 'Supsupin'},
+          {'first_name' : 'Mark', 'last_name' : 'Guillen'},
+          {'first_name' : 'KB', 'last_name' : 'Tonel'},
+     ]
+@app.route('/student')
+def render_lists():
+     return render_template("index.html", student=student_info)
+
+if __name__=="__main__":
+    app.run(debug=True)  
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='../css/style.css') }}">
+    <title>HTML Table Assignment</title>
+    
+</head>
+    <h1 style="text-align:center">HTML Table</h1>
+<body>
+    <div class="container col-sm-6">
+        <table class="table table-bordered table-md">
+            <thead class="color: blue ">
+                <tr>
+                    <th scope="col">First</th>
+                    <th scope="col">Last</th>
+                    <th scope="col">Full Name</th>
+                </tr>
+            </thead class="bold">
+            <tbody>       
+            {% for student in student: %}
+            <tr>
+                <td>{{student["first_name"]}}</td>
+                <td>{{student["last_name"]}}</td>
+                <td>{{student["first_name"]}} {{student["last_name"]}}</td>
+            </tr>
+            {% endfor %} 
+            </tbody>          
+        </table>
+    </div>
+</body>
+</html>                 
+
+
+
+result
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <h2>Submitted Info:</h2>
+        <table>
+            <tr>
+                <td>Name:</td>
+                <td>{{nameT}}</td>
+            </tr>
+            <tr>
+                <td>Dojo Location:</td>
+                <td>{{dojoT}}</td>
+            </tr>
+            <tr>
+                <td>Favorite Language:</td>
+                <td>{{langT}}!!!</td>
+            </tr>
+            <tr>
+                <td>Comment:</td>
+                <td>{{commentT}}</td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

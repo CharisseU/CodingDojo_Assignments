@@ -1,0 +1,54 @@
+from flask import Flask, render_template
+app = Flask(__name__)
+
+@app.route("/play")
+def boxes():
+    return render_template("index.html", x=3)
+@app.route("/play/<x>")
+def user_boxes(x):
+    return render_template("index.html", times=int(x))
+@app.route("/play/<x>/<color>")
+def user_boxes_colored(x, color):
+    return render_template("index.html", times=int(x), 
+    color=color)
+
+
+if __name__=="__main__":
+    app.run(debug=True)      
+ {% if x >= 35 %}
+            <div class="box" style="background-color:#E33C2F"></div> 
+            {% endif %}
+            {% if x >= 35 %}
+            <div class="box" style="background-color: #FFFFFF"></div> 
+            {% endif %}     
+            {% if x >= 35 %}
+            <div class="box" style="background-color: #9FC5F8"></div> 
+            {% endif %} 
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Playground</title>
+</head>
+<body>
+    <h1 style='text-align: center; margin-top: 20pt'>Welcome!</h1>
+    <div class="container" style="text-align: center">
+        {% for i in range(0,times): %}
+        <div class="box" style="width: 20%; height: 200px; background-color: 
+        {{ color }}; border: 2px solid black; display:inline-block; 
+        margin: 0px 2%"></div>
+        {% endfor %}
+    </div>
+</body>
+</html>           
