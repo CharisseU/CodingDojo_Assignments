@@ -1,0 +1,15 @@
+C:/Users/chari/Desktop/CodingDojo/python-stack/my_environments/py3Env
+
+C:/Users/chari/Desktop/CodingDojo/python-stack/flask/flask_fundamentals/hello_flask
+
+
+
+
+
+
+
+
+
+
+
+C:\Users\chari\Desktop\CodingDojo\python-stack\flask\flask_fundamentals\hello_flask
