@@ -1,0 +1,66 @@
+<!-- Charisse Underwood -->
+
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>My Registration Form</title>
+	<meta name="description" content="A really cool site!">
+	<link rel="stylesheet" type="text/css" href="my_css_file.css">
+	<script type="text/javascript" src="my_javascript_file.js"></script>
+	<script type="text/javascript" src="my_javascript_file2.js"></script>
+	<script type="text/javascript" src="my_javascript_file3.js"></script>
+</head>
+<body>
+    <ul>
+        <p>Please Register</p>
+           <li> <label for="first_name">First Name:</label>
+            <input type="text" id="first_name" name="first_name">
+           </li>
+           <li>
+            <label for="last_name">Last Name:</label>
+            <input type="text" id="last_name" name="last_name">
+            </li>
+            <li>
+            <label for="email">Email:</label>
+            <input type="text" id="email" name="email">
+            </li>
+        </ul>
+        <p>Select your gender:</p>
+        
+            <input type="radio" id="male" name="gender" value="male">
+            <label for="male">Male</label>
+        
+            <input type="radio" id="female" name="gender" value="female">
+            <label for="female">Female</label>
+        
+            <input type="radio" id="Other" name="gender" value="decline">
+            <label for="Other">Prefer not to say</label>
+        <p>
+            <form action="/action_page.php">
+                Birthday:
+                <input type="date" name="bday">
+                <input type="submit">
+            </form>
+        </p>
+
+    <p>A short description about yourself:</p>
+        <label for="text"></label>
+        <input type="text" id="" name="">
+    <p> 
+        <label for="Languages">Languages</label>
+        
+        
+        <select>
+                <option value="JavaScript">JavaScript</option>
+                <option value="HTML">HTML</option>
+                <option value="Ruby">Ruby</option>
+                <option value="PHP" selected>PHP</option>
+                <option value="C#" selected>C#</option>
+              </select>
+    </p>
+    <p><input type="submit" value="Submit"></p>
+        
+    </form>
+</body>
+</html>
