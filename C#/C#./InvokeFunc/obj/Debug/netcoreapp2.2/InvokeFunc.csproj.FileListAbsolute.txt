@@ -1,0 +1,11 @@
+C:\Users\chari\Desktop\CodingDojo\C#\InvokeFunc\bin\Debug\netcoreapp2.2\InvokeFunc.deps.json
+C:\Users\chari\Desktop\CodingDojo\C#\InvokeFunc\bin\Debug\netcoreapp2.2\InvokeFunc.runtimeconfig.json
+C:\Users\chari\Desktop\CodingDojo\C#\InvokeFunc\bin\Debug\netcoreapp2.2\InvokeFunc.runtimeconfig.dev.json
+C:\Users\chari\Desktop\CodingDojo\C#\InvokeFunc\bin\Debug\netcoreapp2.2\InvokeFunc.dll
+C:\Users\chari\Desktop\CodingDojo\C#\InvokeFunc\bin\Debug\netcoreapp2.2\InvokeFunc.pdb
+C:\Users\chari\Desktop\CodingDojo\C#\InvokeFunc\obj\Debug\netcoreapp2.2\InvokeFunc.csprojAssemblyReference.cache
+C:\Users\chari\Desktop\CodingDojo\C#\InvokeFunc\obj\Debug\netcoreapp2.2\InvokeFunc.csproj.CoreCompileInputs.cache
+C:\Users\chari\Desktop\CodingDojo\C#\InvokeFunc\obj\Debug\netcoreapp2.2\InvokeFunc.AssemblyInfoInputs.cache
+C:\Users\chari\Desktop\CodingDojo\C#\InvokeFunc\obj\Debug\netcoreapp2.2\InvokeFunc.AssemblyInfo.cs
+C:\Users\chari\Desktop\CodingDojo\C#\InvokeFunc\obj\Debug\netcoreapp2.2\InvokeFunc.dll
+C:\Users\chari\Desktop\CodingDojo\C#\InvokeFunc\obj\Debug\netcoreapp2.2\InvokeFunc.pdb
