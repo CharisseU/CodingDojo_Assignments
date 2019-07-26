@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Survey Result</title>
+    <link rel="stylesheet" type= "text/css" href="{{ url_for('static', filename='css/style.css')}}">
+</head>
+<body>    
+    <div class="container">
+        <h1>Submitted Information:</h1>        
+        <table>
+            <tr>
+                <td>Name:</td><td>{{survey["name"]}}</td>
+            </tr>
+            <tr>
+                <td>Dojo Location:</td><td>{{survey["location"]}}</td>
+            </tr>
+            <tr>
+                <td>Favorite Language:</td><td>{{survey["language"]}}</td>
+            </tr>
+            <td>Comment:</td><td>{{survey["comment"]}}</td>
+        </table>
+        <button><a href="/">Go Back</a></button>
+    </div>
+</body>
+</html>

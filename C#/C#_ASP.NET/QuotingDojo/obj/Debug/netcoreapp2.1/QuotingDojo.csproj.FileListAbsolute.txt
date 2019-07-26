@@ -1,6 +1,0 @@
-C:\Users\chari\Desktop\CodingDojo\C#\C#_ASP.NET\QuotingDojo\obj\Debug\netcoreapp2.1\QuotingDojo.csprojAssemblyReference.cache
-C:\Users\chari\Desktop\CodingDojo\C#\C#_ASP.NET\QuotingDojo\obj\Debug\netcoreapp2.1\QuotingDojo.csproj.CoreCompileInputs.cache
-C:\Users\chari\Desktop\CodingDojo\C#\C#_ASP.NET\QuotingDojo\obj\Debug\netcoreapp2.1\QuotingDojo.RazorAssemblyInfo.cache
-C:\Users\chari\Desktop\CodingDojo\C#\C#_ASP.NET\QuotingDojo\obj\Debug\netcoreapp2.1\QuotingDojo.RazorAssemblyInfo.cs
-C:\Users\chari\Desktop\CodingDojo\C#\C#_ASP.NET\QuotingDojo\obj\Debug\netcoreapp2.1\QuotingDojo.AssemblyInfoInputs.cache
-C:\Users\chari\Desktop\CodingDojo\C#\C#_ASP.NET\QuotingDojo\obj\Debug\netcoreapp2.1\QuotingDojo.AssemblyInfo.cs

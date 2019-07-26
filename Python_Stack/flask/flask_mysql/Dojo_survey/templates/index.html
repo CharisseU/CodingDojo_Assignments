@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>  
+  <meta charset="UTF-8">
+  
+  <title>Dojo Survey Assignment</title>
+
+  <link rel="stylesheet" type= "text/css" href="{{ url_for('static', filename='css/style.css')}}">
+</head>
+<body>    
+    <div class="container">
+      <h1 style="margin: 30px; padding: 30px">Dojo Survey Form</h1>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <p class="flashes">{{message}}</p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <form action="/process-results" method="POST">
+          <div class="row">
+            <div class="col-25">
+              <label for="name">Name: </label>
+            </div>
+            <div class="col-75">
+              <input type="text" id="name" name="name" placeholder="Your name: ">
+            </div>
+            </div>
+
+            <div class="row">
+              <div class="col-25">
+                <label for="location"id="location" name="location">Dojo Location:</label>
+            </div>  
+              <div class="col-75">
+                <select name="location" id="location">
+                    <option value="Seattle">Seattle</option>
+                    <option value="portland">Portland</option>
+                    <option value="los Angeles">Los Angeles</option>
+                    <option value="San Jose">San Jose</option>
+                    <option value="Boise">DeMoines</option>
+                    <option value="Washington, D.C.">Washington, D.C.</option>
+                </select>
+              </div>
+            </div>
+
+              <div class="row">
+                <div class="col-25">
+                  <label for="language"id="language" name="language">Favorite Language:</label>
+                </div>
+                  <div class="col-75">                    
+                    <select name="language" id="language">
+                      <option value="Python">Python</option>
+                      <option value="C#">C#</option>
+                      <option value="PHP">PHP</option>
+                      <option value="C++">C++</option>
+                      <option value="Cobol">Cobol</option>
+                      <option value="Java">Java</option>
+                      <option value="JavaScript">JavaScript</option>
+                    </select>  
+                  </div>
+                </div> 
+
+                  <div class="row">
+                    <div class="col-25">
+                      <label for="comment" id="comment" name="comment">Comment:</label>
+                    </div>
+                    <div class="col-75">
+                      <textarea id="comment" name="comment" placeholder="Write something..." style="height:200px"></textarea>
+                    </div>
+                  </div>
+                    <div class="row">
+                      <input type="submit" value="Submit">
+                    </div>
+        </form>
+    </div>         
+
+</body>
+</html>

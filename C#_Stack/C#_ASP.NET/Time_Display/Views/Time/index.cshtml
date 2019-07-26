@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Time Display</title>
+</head>
+<body>
+    @{
+        DateTime CurrentTime = DateTime.Now;
+        var Date = CurrentTime.ToString("dddd, dd, MMMM, yyyy");
+        var Time = CurrentTime.ToString("HH:mm:ss");
+    }
+    <h1>The Current Time is...</h1>
+    <h2>@Date</h2>
+    <h2>@Time</h2>
+</body>
+</html>

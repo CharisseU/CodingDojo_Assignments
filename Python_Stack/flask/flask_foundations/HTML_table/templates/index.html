@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='../css/style.css') }}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <title>HTML Table Assignment</title>
+    
+</head>    
+<body>
+    <div class="flex-container col-sm-6" >
+      <h1 style="text-align:center; " >HTML Table</h1>            
+        <table class="table table-bordered table-md" style="text-align:center">
+                <thead>
+                  <tr>                   
+                    <th scope="col">First</th>
+                    <th scope="col">Last</th>
+                    <th scope="col">Full Name</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    {% for users in users: %}  
+                    <tr>                    
+                        <td>{{users["first_name"]}}</td>
+                        <td>{{users["last_name"]}}</td>
+                        <td>{{users["first_name"]}} {{users["last_name"]}}</td>
+                  </tr>
+                  {% endfor %}         
+                </tbody>
+            </table>
+      </div>
+</body>
+</html>

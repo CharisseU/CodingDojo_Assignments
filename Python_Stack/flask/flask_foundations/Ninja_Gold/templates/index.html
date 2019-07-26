@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ninja Gold Assignment</title>
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <script type="text/javascript" src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+</head>
+<body>  
+    <div class="container">
+        <div class="title">
+            <h1 style="font-size:35pt; color:blue;">Ninja Gold!</h1>
+            <p style="font-size:20pt;">The goal is to earn {{ session["wincondition"]["gold"] }} gold in {{ session["wincondition"]["turns"] }} turns.</p>
+        </div>
+        <div class="banner">
+            <p>Your Gold:</p>
+            <p class="balance"> {{ session["gold"] }} </p>
+            <p class="counter">Turn: {{ session["counter"] }}</p>
+        </div>
+        {% if "win" in session %}
+            <div class="reset">
+                {% if session["win"] == True %}
+                    <h1 class="gain">YOU WON! Great job!</h1>
+                {% else %}
+                    <h1 class="loss">OUCH... you lost. Would you like another try?</h1>
+                {% endif %}
+                    {% if "win" in session %}
+                        <p>Too{% if session["win"] %} easy{% else %} hard{% endif %}?</p>
+                        <p>Set your own win conditions here:</p>
+                        <form action="/reset" method="post" class="reset-form">
+                            <p>Gold Goal: <span style="font-size:9pt;">(default is 100)</span></p>
+                            <input type="number" name="goldGoal" class="goal-set" style="width:5%">
+                            <p>Turns: <span style="font-size:9pt;">(default is 10)</span></p>
+                            <input type="number" name="turnsGoal" class="goal-set"  style="width:5%">
+                            <button type="submit" class="reset-btn">Reset the Game</button>
+                        </form>
+                    {% endif %}
+            </div>
+        {% else %}
+            <div class="place-row">
+                <div class="places" id="farm">
+                    <h2>Farm</h2>
+                    <p>(earns 10-20 gold)</p>
+                    <form action="/process_money" method="POST">
+                        <input type="hidden" name="place" value="farm">
+                        <input type="submit" value="Find Gold!" class="submit-btn">
+                    </form>
+                </div>
+                <div class="places" id="cave">
+                    <h2>Cave</h2>
+                    <p>(earns 5-10 gold)</p>
+                    <form action="/process_money" method="POST">
+                        <input type="hidden" name="place" value="cave">
+                        <input type="submit" value="Find Gold!" class="submit-btn">
+                    </form>
+                </div>
+                <div class="places" id="house">
+                    <h2>House</h2>
+                    <p>(earns 2-5 gold)</p>
+                    <form action="/process_money" method="POST">
+                        <input type="hidden" name="place" value="house">
+                        <input type="submit" value="Find Gold!" class="submit-btn">
+                    </form>
+                </div>
+                <div class="places" id="casino">
+                    <h2>Casino</h2>
+                    <p>(earns or loses 0-50 gold)</p>
+                    <form action="/process_money" method="post">
+                        <input type="hidden" name="place" value="casino">
+                        <input type="submit" value="Find Gold!" class="submit-btn">
+                    </form>
+                </div>
+            </div>
+        {% endif %} 
+        <h2 style="font-size: 13pt;margin:10px;padding:0px 90px">Activities:</h2>       
+        <div class="activity-log">                
+            {% for entry in range(session["ledgerList"]|length-1, -1, -1) %}
+                <p class="{{ session["gainList"][entry] }}">
+                    {{ session["ledgerList"][entry] }}
+                </p>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

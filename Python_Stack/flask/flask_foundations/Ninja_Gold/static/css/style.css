@@ -1,0 +1,99 @@
+*{
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+.container{
+  width: 90%;
+  height: 100%;
+  background-color: lightgoldenrodyellow;
+  padding: 20px 20px 100px 20px;
+}
+.places{
+  display: inline-block;
+  width: 20%;
+  height: 200px;
+  margin: 0 2%;
+}
+.title{
+  text-align: center;
+  margin: 1rem auto;
+ }
+.banner{
+  width: 80%;
+  margin: 0 auto;
+}
+.banner p{
+  display:inline-block;
+  font-weight: bold;
+}
+p.balance{
+  border: 2px solid black;
+  background-color: white;
+  padding: .2rem;
+  text-align: center;
+}
+.reset{
+  display: block;
+  margin: 2rem auto;
+  text-align: center;
+}
+.reset p{
+  margin: 1rem auto;
+}
+.reset-btn{
+  display: block;
+  color: white;
+  background-color: green;
+  padding: .5rem 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 2px 2px 2px black;
+  position: relative;
+  width: 15%;
+  margin: 1rem auto;
+}
+.place-row{
+  width: 90%;
+  text-align: center;
+  padding: 5%
+}
+.places{
+  text-align: center;
+  width: 20%;
+  height: 100%;
+  margin: 2%, 0, 2%, 0;
+  border: 3px solid black;
+  padding: 2% 0;
+}
+.places h2{
+  margin-bottom: 1rem;
+
+}
+.places p{
+  margin-bottom: .5rem;
+}
+.submit-btn{
+  padding: .25rem;
+  background-color: gold;
+  color: blue;
+  font-weight: bold;
+  border: none;
+  box-shadow: 2px 2px 2px black;
+  border-radius: 5px;
+}
+.activity-log{
+  border: solid 2px;
+  overflow-y: auto;
+  width: 85%;
+  height: 110px;
+  position: relative;
+  margin: 0 auto;
+}
+.loss{
+  color: red;
+}
+.gain{
+  color: green;
+}
