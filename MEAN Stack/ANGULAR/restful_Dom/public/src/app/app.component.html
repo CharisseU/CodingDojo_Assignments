@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Angular Tasks</title>
+</head>
+<body>
+  <div class="container">
+
+    <h1 class="title">Restful Tasks API</h1>
+
+    <div class="new-task">
+      <h2>New Task</h2>
+      <form class="form-new" #newTaskForm="ngForm">
+        <div class="form-group">
+          <label for="newTitle" class="form-label">Title</label>
+          <input
+              type="text"
+              class="form-control"
+              id="newTitle"
+              required
+              [(ngModel)]="newTask.title"
+              name="newTask.title"
+              #name="ngModel"
+              >
+        </div>
+        <div class="form-group">
+          <label for="newDesc" class="form-label">Description</label>
+          <input
+                type="text"
+                name="newTask.description"
+                id="newTask.description"
+                class="form-control"
+                required
+                [(ngModel)]="newTask.description"
+                #name="ngModel"
+              >
+        </div>
+        <button
+              type="submit"
+              class="btn-submit"
+              (click)="createTask()"
+              [disabled]="!newTaskForm.form.valid"
+              >Create</button>
+      </form>
+    </div>
+
+    <button (click)="getTasksFromService()">GET ALL TASKS</button>
+    <div class="task-list">
+      <div class="task-item" *ngFor='let task of tasks'>
+        <p class="title">{{task.title}}</p>
+        <button class='show' (click)="getTaskDetails(task._id)">Show</button>
+      </div>
+    </div>
+
+
+    <app-details *ngIf="show" [oneTask]="oneTask">
+
+    </app-details>
+
+  </div>
+</body>
+</html>
