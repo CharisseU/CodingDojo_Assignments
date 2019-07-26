@@ -1,0 +1,325 @@
+-Create an empty folder called TestProject
+-navigate to that folder using your terminal/command-prompt/bash.
+in terminal/command-prompt/bash type  - npm init -y
+this command basically says: we are using this folder for an npm based project, (npm init), the (-y) says fill the package.json with the base information.
+If you open this file, the contents should look something like this:
+{
+  "name": "TestProject",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+              "test": "echo \"Error: no test specified\" && exit 1"
+              },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+  }
+Now let’s install ejs and express, from command-line in the same folder:
+
+npm install express --save
+npm install ejs --save
+npm install body-parser --save
+npm install express-session --save
+npm install socket.io --save
+or
+npm install --save express ejs express-session body-parser socket.io
+Now look at how that package.json has changed
+{
+  "name": "TestProject",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "ejs": "^2.4.1",
+    "express": "^4.13.4"
+  }
+}
+You should also have a new node_modules folder with those packages inside.
+
+Dependencies for Express & Socket.io
+Node.js
+This will be a constant across the vast majority of the MEAN stack. You will almost always be running a Node server or app of some kind. This will act as your server and back-end Javascript interpreter.
+
+Express
+Technically a Node module, but let's talk about it here too since it gets its own letter in the acronym! Express is a wonderful set of tools that help us write rules for incoming HTTP requests. Express is arguably the most useful Node module in your collection, and only rarely will we not use it.
+
+node_modules:
+EJS
+Embedded Javascript is the templating engine we will use to render our views. When using EJS, your node server will take the .ejs file you wrote, parse through it, resolve all of the Javascript in the file, and then send a 'rendered' HTML page to the client. This is extra computation that the server will be required to do, and later we'll replace EJS with a full front end framework like Angular.
+
+Express
+Like we said before, express is super useful for managing incoming requests!
+
+body-parser
+Guess what body-parser is used for? Parsing the body! We'll use this piece of middleware to parse information out of HTTP requests made to our server. Body-parser is incredibly flexible, and will be used to not only pull POST data out of requests, but can also snag data encoded into URLs via GET requests, and later you'll use body-parser to pull raw JSON.
+
+socket.io
+This node module will enable you to use web sockets within your application, we'll get into it more later. You will use socket.io for just this chapter!
+
+package.json
+You can use this package.json as a guide, but we strongly recommend using npm to bring in your Node modules for every project you make. Typing npm install express --save will make sure you get the newest version of express!
+
+{
+  "dependencies": {
+    "body-parser": "^1.13.3",
+    "ejs": "^2.3.3",
+    "express": "^4.13.3",
+    "socket.io": "^1.3.6"
+  }
+}
+Setting up a full server!
+Create a new project folder.
+
+Copy this into a package.json file inside that folder:
+
+{
+  "name": "TestProject",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "ejs": "^2.4.1",
+    "express": "^4.13.4"
+  }
+}
+Copy this into a new server.js file inside that folder:
+
+// require express
+var express = require("express");
+// path module -- try to figure out where and why we use this
+var path = require("path");
+// create the express app
+var app = express();
+var bodyParser = require('body-parser');
+// use it!
+app.use(bodyParser.urlencoded({ extended: true }));
+// static content
+app.use(express.static(path.join(__dirname, "./static")));
+// setting up ejs and our views folder
+app.set('views', path.join(__dirname, './views'));
+app.set('view engine', 'ejs');
+// root route to render the index.ejs view
+app.get('/', function(req, res) {
+ res.render("index");
+})
+// post route for adding a user
+app.post('/users', function(req, res) {
+ console.log("POST DATA", req.body);
+ // This is where we would add the user to the database
+ // Then redirect to the root route
+ res.redirect('/');
+})
+// tell the express app to listen on port 8000
+app.listen(8000, function() {
+ console.log("listening on port 8000");
+});
+navigate to this folder with your command line, and then type npm install.
+create an index.ejs file (and place it in the appropriate place based on the server) to load a page when you go to localhost:8000.
+
+________________________________________________________________________________
+
+MONGODB
+Booting the Mongo server:
+Open a terminal and type the following:
+
+cd c:/"Program Files"/MongoDB/Server/4.0/bin/
+
+This is the folder where all the executables are for MongoDB. An executable is basically a file that when run gets directly interpreted by the machine; no compiling or interpreting is needed. We need to run the mongod.exe file. Just type:
+
+mongod.exe     // using Command Prompt; this runs the executable file!
+./mongod      // using bash
+If that was successful, the terminal should fill with a bunch of information and you should not be able to see your normal terminal prompt line, only a beeping underscore. This means your server is up and running.
+
+NOTE: If you would rather have MongoDB start as a system service when you boot your computer follow these instructions.
+
+DON'T CLOSE THIS WINDOW OR TYPE ANYTHING ELSE!
+As long as this terminal window is open, your mongo server will run. Now to be able to connect to your database server, 
+
+OPEN ANOTHER TERMINAL WINDOW and navigate back to the same location as the mongod executable. 
+
+cd c:/"Program Files"/MongoDB/Server/4.0/bin/
+
+Now we are going to run the mongo executable, which is the command line program for interacting with your database. Just type:
+
+mongo.exe
+Note: for some other versions, you may have to type ./mongo instead.
+
+Dependencies for MongoDB
+MongoDB
+Good news! All you need for this chapter is the mongod daemon and the mongo terminal. In computing, a daemon is simply a program that runs in the background which manages different processes. To run our Mongo server we need to run mongod and leave it running while we use the database. The mongo terminal, which needs mongod running, is where you can access your database manually to create, update, and manage your data directly. That's it for dependencies on Mongo!
+_______
+Mac
+Start MongoDB Server: (open a terminal window and enter the following): sudo mongod
+Open Mongo Terminal: (open a terminal window and enter the following): mongo
+_______
+Windows
+Start MongoDB Server: Navigate to your Mongo folder and execute the mongod.exe file.
+Open Mongo Terminal: Navigate to your Mongo folder and execute the mongo.exe file. use ./mongo
+
+
+Database Type:	SQL	Mongo
+Database	Schema	Database (db)
+Collection of related records	Tables	Collections
+Each one record in the collection of records	Row / Record	Document
+MySQL Database Schema == MongoDB Database (db)
+No surprises here; the database is still the unit we use to hold an entire project's data. MongoDB is crazy, but not crazy enough to not need to use the term database! Note that from our Mongo shell, we have access to all the databases stored on our Mongo server.
+
+Show all databases available on our current MongoDB server	Example:
+show dbs
+Show current database selected	Example:
+db
+Change to another database
+Note: If the database you're trying to switch to does not exist, 
+Mongo shell will create a new database and switch to it.	Pattern:
+use DB_NAME
+
+Example:
+use message_board_db
+Delete database
+Note: db.dropDatabase() will delete the current database in use.
+
+Example:
+use message_board_db
+db.dropDatabase()
+SQL: Tables == MongoDB: Collections
+A SQL database is comprised of tables. Tables contain groups of similarly-structured pieces of data. This shouldn't be new to you, but it is important to take a step back and review what you've learned through a more theoretical lens. MongoDB databases are comprised of collections. A collection is the MongoDB analog to a SQL table.
+
+View all collections in a MongoDB	Example:
+show collections
+Create a new collection in the current database	Pattern:
+db.createCollection("COLLECTION_NAME")
+
+Example:
+db.createCollection("ninjas")
+Destroy a collection 	Pattern:
+db.COLLECTION_NAME.drop()
+
+Example:
+db.ninjas.drop()
+There's not much to say about collections right now. That's because collections are really just in place to corral individual records.  There is no structure to a collection, which is part of why MongoDB is powerful, but also part of why a NoSQL database is not a one-size-fits-all solution.  This is very different than tables in a SQL database; tables are normally where we define all the structure of a particular facet of our database in a SQL database.  Column names and their data types are very important in the world of relational databases.  In NoSQL land, they are much less important, as you will soon find out.
+
+SQL: Row / Record == MongoDB: Document (JSON object)
+This is it.  This is why we use MongoDB.  SQL table rows have the rigid structure: every entry in a database (i.e. every row) has the same fields.  This is not the case in MongoDB. Each document is a JSON object and is able to have any number of key-value pairs you so desire.  And just like in regular Javascript objects, we can add key-value pairs to objects on the fly.  When you use a NoSQL database, you gain speed but lose rigidity; you trade structure for flexibility.  This should make sense.  Remember, people use Mongo for its speed. If we can't write to objects on the fly, we might slow down our transactions and that would be counterproductive.
+
+Technically, we've lied. MongoDB doesn't use JSON objects to store your data. They use what's called BSON (Binary JSON). BSON is friendlier to store (due to it being binary; don't stress about this) and can support a few more things (like dates, which are not part of JSON, but crucial for databases). But for all intents and purposes, MongoDB documents are to be treated and used as if they were ordinary JSON. Trust us!  The next tab will delve into working with documents, so let's get moving!
+
+Windows
+Start MongoDB Server: Navigate to your Mongo folder and execute the mongod.exe file.
+Open Mongo Terminal: Navigate to your Mongo folder and execute the mongo.exe file.
+
+Open command prompt inside the folder and to create express application type the following command: express yourApplicationName
+
+
+make a package.json file:
+yourcommandline> npm init -y
+yourcommandline> npm install express --save
+yourcommandline> npm install express-session --save
+yourcommandline> npm install ejs --save
+yourcommandline> npm install body-parser --save
+yourcommandline> npm install mongoose --save
+npm install bcrypt
+or
+npm install express ejs body-parser mongoose bcrypt
+
+npm install bcrypt
+
+nodemon server.js
+
+//Server.js file
+// Require the Express Module
+var express = require('express');
+// Create an Express App
+var app = express();
+// Require body-parser (to receive post data from clients)
+var bodyParser = require('body-parser');
+// Integrate body-parser with our App
+app.use(bodyParser.urlencoded({ extended: true }));
+// Require path
+var path = require('path');
+// Setting our Static Folder Directory
+app.use(express.static(path.join(__dirname, './static')));
+// Setting our Views Folder Directory
+app.set('views', path.join(__dirname, './views'));
+// Setting our View Engine set to EJS
+app.set('view engine', 'ejs');
+// Routes
+// Root Request
+app.get('/', function(req, res) {
+    // This is where we will retrieve the users from the database and include them in the view page we will be rendering.
+    res.render('index');
+})
+var mongoose = require('mongoose');
+// Add User Request 
+app.post('/users', function(req, res) {
+    console.log("POST DATA", req.body);
+    // This is where we would add the user from req.body to the database.
+    res.redirect('/');
+
+// This is how we connect to the mongodb database using mongoose -- "basic_mongoose" is the name of
+//   our db in mongodb -- this should match the name of the db you are going to use for your project.
+mongoose.connect('mongodb://localhost/basic_mongoose');
+})
+var UserSchema = new mongoose.Schema({
+ name: String,
+ age: Number
+})
+mongoose.model('User', UserSchema); // We are setting this Schema in our Models as 'User'
+var User = mongoose.model('User') // We are retrieving this Schema from our Models, named 'User'
+// Setting our Server to Listen on Port: 8000
+app.listen(8000, function() {
+    console.log("listening on port 8000");
+})
+
+________________________________________________
+ANGULAR
+Installing Angular C.L.I.
+C.L.I. is Angular's Command Line Interface, it's software we install on our computer, and use with our terminal. It allows us to utilize Angular's C.L.I. to create new projects and more. Let's install the C.L.I. through the terminal.
+
+npm install -g @angular/cli
+Source: https://github.com/angular/ang...
+
+Note: The C.L.I. is not the only way to build an Angular app. You could build it by including only the necessary package.json files and config files. Also, the C.L.I. gives us a large version, full of libraries, we can easily remove libraries we are not going to use, so even though the initial app is full of resources, we can easily modify it to become a lightweight framework.
+
+Creating a New App
+* navigate to the folder directory you want your new app to be saved in*
+
+ng new public
+
+Note:  We choose to name our Angular projects  public  to have consistency across projects. No matter which project we are working on, we always know that the  public  directory contains our Angular project. This will also make serving the dist folder easier, since the code to do this will not be project-dependent. 
+
+Resource: https://github.com/angular/ang...
+
+
+We will need to create or utilize an Express project. Using the terminal, we can create a new angular project within our Express root directory. We then need to build the Angular project (using the terminal, navigate to the Angular app's root directory and run the 
+
+ng build --watch command 
+
+which will create a dist folder within that directory. Lastly, we need our Express project to define a static route to the newly created dist folder. Once this is done, users visiting our Express project will be served the Angular application.
+
+What are 'ng build --watch' and the 'dist' folder?
+The 'ng build --watch' command converts all Angular TypeScript files into minified JavaScript files and places them in a newly created folder called dist. These files are the necessary files the browser needs to run the Angular application. ('dist' is an abbreviation for the 'distribution' folder, take a look inside the folder after you have built it). The '--watch' portion of the command launches an additional Node server which keeps watch over all of our Angular TypeScript files. If any TS files get modified, this server will automatically run 'ng build', so the distribution folder is always up to date.
+
+express-app > server.js
+As long as Express knows where we keep static files, it will serve index.html by default when we make a request to the root route. Since index.html is found in a folder within our dist folder, we just need to direct Express to find it. Do not overwrite what should be served on the root route so that it will always default to serving index.html.
+
+cd c:/"Program Files"/MongoDB/Server/4.0/bin/
+make a package.json file:
+ npm init -y
+ npm install express --save
+ npm install body-parser --save
+ npm install mongoose --save

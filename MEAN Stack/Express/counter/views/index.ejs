@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Counter</title>
+</head>
+<body>
+    <div class="container" style="width:90%; height:50%;text-align:center; ">
+	<h1>Counter</h1>
+	<p>You have visited this site<%= count %> times.</p>
+		<form action="/add2" method="post"style="margin:0px 10px;">
+		<button type="submit">+2</button>
+	</form>
+	<form action="/reset" method="post" style="float:center;margin:20px;">
+		<button type="submit">reset</button>
+    </form>
+</div>
+</body>
+</html>

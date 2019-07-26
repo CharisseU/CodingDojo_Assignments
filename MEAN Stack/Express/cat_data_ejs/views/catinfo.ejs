@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>EJS Cat Infoormation</title>
+</head>
+<body>
+	<div class="container">
+		<div class="header">
+			<h1>Info for Cat #<%= cat.id %></h1>
+		</div>
+		<div class="body">
+            <p>Name: <%= cat.name %></p>
+            <p>Favorite Food: <%= cat.foods %></p>
+			<p>Age: <%= cat.age %> years</p>
+			<p>
+				Favorite Sleeping Spots:
+					<ul>
+						<% for (let i in cat.sleep) { %>
+							<li><%= cat.sleep[i] %></li>
+						<% } %>
+					</ul>
+			</p>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<% include partials/header %>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <% include partials/nav %>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <h1>Welcome to the <%= title %> page</h1><hr />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-2">
+                    <p class='strong'>Secret:</p>
+                    <p class='strong'>Author:</p>
+                    <p class='strong'>Added on:</p>
+                    <!-- <p class='strong'>Date modified:</p> -->
+                </div>
+                <div class="col-6">
+                    <p><%= secret.content %></p>
+                    <p><%= userName %></p>
+                    <p><%= secret.createdAt %></p>
+                    <!-- <p><%= secret.createdAt %></p> -->
+                </div>
+                <!-- <div class="col">
+                    <p class='strong'>Actions:</p>
+                    <p><a href='' class='btn btn-primary btn-sm'>Edit</a></p>
+                    <p><a href='' class='btn btn-primary btn-sm'>Delete</a></p>
+                </div> -->
+            </div>
+            <div class="row">
+                <div class="col">
+                    <% if(typeof secret.comments != 'undefined'){ %>
+                        <% for(const comment of secret.comments){ %>
+                            <div class='comments'>
+                                <span><%= comment.user.first_name %> said: <%= comment.content %> on <%= comment.createdAt %></span>
+                                <% if(comment.user.id === user_id) { %> 
+                                <form style='display: inline-block' action='/comments/<%= comment._id %>/delete' method='POST'>
+                                    <button type="submit" class='btn btn-primary btn-sm'>Delete</button>
+                                </form>
+                                <% } %>
+                            </div>
+                        <% } %>
+                    <% } %>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <form action="/secrets/<%= secret.id %>/comments" method="POST">
+                            <div class="form-group">
+                            <label for="comment">Add comment: </label>
+                            <input name="secret" type="hidden" value="<%= secret.id %>">
+                            <input name="user" type="hidden" value="<%= userId %>">
+                            <input class='form-control' type="text" name="content">
+                            <button class="btn btn-primary btn-sm" type="submit">Add Comment</button>
+                            <a href='/secrets' class='btn btn-primary btn-sm' title='Go back'>Go back</a>
+                            </div>
+                        </form>
+                        <!-- tip to easily see objects printed in full instead of [object Object] -->
+                        <!-- JSON.stringify(messages) --> 
+                        <!-- based on the structure of your messages, determine how to display them -->
+                    <% if(messages.create_comment_error) { %>
+                        <ul>
+                        <% for (const message of messages.create_comment_error) { %>
+                            <li class='error'><%= message %></li>
+                        <% } %>
+                        </ul>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+<% include partials/footer %>

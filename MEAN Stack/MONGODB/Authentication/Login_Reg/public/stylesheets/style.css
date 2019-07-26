@@ -1,0 +1,47 @@
+
+
+* {
+    padding-top: 20px;
+	padding-bottom: 20px;
+	font-family: sans-serif;
+}
+
+/* Wrapping element */
+/* Set some basic padding to keep content from hitting the edges */
+.container {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Carousel */
+.carousel-caption p {
+    font-size: 20px;
+    line-height: 1.4;
+}
+
+/* Make .svg files in the carousel display properly in older browsers */
+.carousel-inner .item img[src$=".svg"] {
+    width: 100%;
+}
+
+
+/* Hide/rearrange for smaller screens */
+@media screen and (max-width: 767px) {
+    /* Hide captions */
+    .carousel-caption {
+        display: none;
+    }
+}
+
+.reg-form{
+    width: 30%;
+    margin: 0% 4% 0% 4%;
+    display: inline-block;
+}
+
+.log-form{
+    width: 30%;
+    margin: 0% 4% 0% 4%;
+    display: inline-block;
+    vertical-align: top;
+}

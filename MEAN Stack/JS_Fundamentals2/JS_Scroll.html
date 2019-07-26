@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>JS Scroll App</title>
+  <head>
+    <title>JS Scroll</title>
+    <style>
+      body {
+        background-color: black;
+        font-family: monospace;
+        color: white;
+        font-size: 50px;
+        text-align: center;
+        margin-top: 20%;
+      }
+      #magic {
+        color: #777;
+        border-right: 1px solid #777;
+        padding-right: 7px;
+        display: inline;
+      }
+    </style>
+  </head>
+  <body>
+    Coding is <div id="magic"></div>&nbsp;
+    <script>
+      var words = ["a lot of fun", "about not giving up", "challenging and empowering", "creative expression", "what I learned at CodingDojo!"],
+        el = document.getElementById('magic'),
+        word_counter = 0,
+        character_counter = 0;
+      function updateText() {
+        var char = words[word_counter][character_counter++];
+        if (char === ' ') {
+          char = '&nbsp;' 
+        }
+        el.innerHTML = el.innerHTML + char;
+        if (character_counter == words[word_counter].length + 1)  
+        {
+          word_counter++; 	
+          character_counter = 0;	
+          el.innerHTML = '';            
+          if (word_counter == words.length)
+            word_counter = 0;
+        }
+      }
+      setInterval(updateText, 600);
+    </script>
+  </body>
+</html>

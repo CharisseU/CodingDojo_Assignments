@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+  </body>
+  <script type="text/javascript">
+  function fib() {
+    var one = 0;
+    var two = 1;
+    var three = 1;
+    function nacci() {
+      console.log(three);
+      three = one+two;
+      one = two;
+      two = three;
+    }
+    return nacci
+  }
+  var fibCounter = fib();
+  fibCounter() // should console.log "1"
+  fibCounter() // should console.log "1"
+  fibCounter() // should console.log "2"
+  fibCounter() // should console.log "3"
+  fibCounter() // should console.log "5"
+  fibCounter() // should console.log "8"
+  </script>
+</html>
+
+<!-- <html>
+<head>
+	<title>Fib + Nacci</title>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+</head>
+<body>
+	<script>
+	(function() 
+	{
+		function fib() {
+			var first = 0,
+			    second = 1,
+			    counter = 0,
+			    sum;
+			function nacci() {
+				if (counter < 1 )
+				{
+					console.log(1);
+					counter ++;
+				}
+				else 
+				{
+					console.log(sum = first + second);
+					first = second;
+					second = sum;
+				}
+			}
+			return nacci
+		}
+		var fibCounter = fib();
+		fibCounter();
+		fibCounter();
+		fibCounter();
+		fibCounter();
+		fibCounter();
+		fibCounter();
+		fibCounter();
+		fibCounter();
+	} 
+	())
+	</script>
+
+</body>
+</html> -->

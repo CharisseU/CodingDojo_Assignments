@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Assignment - Express JS and MongoDB - <%= title %></title>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        
+        <link rel="stylesheet" type="text/css" href="/css/styles.css">
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <nav>
+                        <a href='/' title="Home Page" class="btn btn-link btn-sm">Home Page</a>
+                    </nav>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <h1>Welcome to the <%= title %> page</h1>
+                    <h3>Existing User login</h3>
+                    <form id="message_form" action="/login" method="POST">
+                        <div class="form-group">
+                            <label for="email" class="col-3">Email:</label>
+                            <div class="col-6">
+                                <input type="text" class="form-control" name='email'>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="password" class="col-3">Password:</label>
+                            <div class="col-6">
+                                <input type="password" class="form-control" name='password'>
+                            </div>
+                        </div>
+                        <div class="form-group justify-content-start">
+                            <button class="post_msg_btn btn btn-primary btn-sm">Login</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="row">
+                <p>New user <a href="/user/new" title='New User Registration'>Registration</a></p>
+                <div id="flash_msg" class="col-6">
+                    <% if(messages.user_login_error) { %>
+                        <ul>
+                        <% for (var x of messages.user_login_error) { %>
+                            <li class='error'><%= x %></li>
+                        <% } %>
+                        </ul>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+</body>
+</html>

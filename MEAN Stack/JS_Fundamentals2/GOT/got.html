@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Game of Thrones</title>
+    <style>
+      body {
+        background-color: whitesmoke;
+        color: lightskyblue;
+      }
+      img {
+        border: 1px solid rgb(128, 128, 128);
+        max-width: 200px;
+        height: 250px;
+      }
+      .container {
+        margin-left: 100px;
+        width: 1000px;
+        height: 700px;
+      }
+      .img-loc {
+        display: inline-block;
+        vertical-align: top;
+        margin-left: 30px;
+        padding: 3px;
+        
+      }
+      .card {
+        display: inline-block;
+        width: 500px;
+        height: 350px;
+        margin-left: 220px;
+        padding: 5px;
+        border: 3px solid grey;
+      }
+      h2, h3, h4 {
+        text-align: center;
+      }
+    </style>
+    <script>
+      $(document).ready(function () {
+        $('.card').hide();
+        $('#house_stark').click(function () {
+          $('.card').show();
+          $.get('https://anapioficeandfire.com/api/houses/362', house);
+          function house(data) {
+            console.log(data);
+            document.getElementById('name').innerHTML = data.name;
+            document.getElementById('words').innerHTML = data.words;
+            document.getElementById('titles').innerHTML = data.titles;
+          }
+        });
+      });
+      $(document).ready(function () {
+        $('.card').hide();
+        $('#house_targaryen').click(function () {
+          $('.card').show();
+          $.get('https://anapioficeandfire.com/api/houses/378', house);
+          function house(data) {
+            console.log(data);
+            document.getElementById('name').innerHTML = data.name;
+            document.getElementById('words').innerHTML = data.words;
+            document.getElementById('titles').innerHTML = data.titles;
+          }
+        });
+      });
+      $(document).ready(function () {
+        $('.card').hide();
+        $('#house_lannister').click(function () {
+          $('.card').show();
+          $.get('https://anapioficeandfire.com/api/houses/229', house);
+          function house(data) {
+            console.log(data);
+            document.getElementById('name').innerHTML = data.name;
+            document.getElementById('words').innerHTML = data.words;
+            document.getElementById('titles').innerHTML = data.titles;
+          }
+        });
+      });
+      $(document).ready(function () {
+        $('.card').hide();
+        $('#house_baratheon').click(function () {
+          $('.card').show();
+          $.get('https://anapioficeandfire.com/api/houses/17', house);
+          function house(data) {
+            console.log(data);
+            document.getElementById('name').innerHTML = data.name;
+            document.getElementById('words').innerHTML = data.words;
+            document.getElementById('titles').innerHTML = data.titles;
+          }
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <section class="section">
+        <h2 class="title">Game of Thrones</h2>
+        <h3 class="subtitle">Click on one of the houses</h3>
+        <div class="img-loc">
+          <img src="./Images/stark.png" alt="house_stark" id="house_stark">
+        </div>
+        <div class="img-loc">
+          <img src="./Images/targaryen.png" alt="house_targaryen" id="house_targaryen">
+        </div>
+        <div class="img-loc">
+          <img src="./Images/lannister.png" alt="house_lannister" id="house_lannister">
+        </div>
+
+        <div class="img-loc">
+          <img src="./Images/baratheon.png" alt="house_baratheon" id="house_baratheon">
+        </div>
+        <div class="card">
+          <h4 class="subtitle">House details</h4>
+          <p class="card-name">NAME:</p>
+          <p id='name'></p>
+          <p class="card-content">WORDS:</p>
+          <p id='words'></p>
+          <p class="card-content">TITLES:</p>
+          <p id='titles'></p>
+        </div>
+      </section>
+
+    </div>
+  </body>
+
+</html>

@@ -1,0 +1,77 @@
+<!-- The content below is only a placeholder and can be replaced.
+<div style="text-align:center">
+  <h1>
+    Restful Tasks API
+  </h1>
+  <form (submit)="createTaskFromService()">
+    <h2>New Tasks</h2>
+    <label>Task title:</label>
+    <input type="text" name="newTask.title" style="padding: 5px;" [(ngModel)]="newTask.title">
+    <label>Task description:</label>
+    <input type="text" name="newTask.description" style="padding: 5px;" [(ngModel)]="newTask.description">
+    <button style="margin: 15px;padding:5px;">Create Task</button>
+  </form>
+  <h2> All Tasks: </h2>
+  <div *ngFor="let task of tasks">
+    <table class="blackbox">
+      <tr>
+        <td>Title: {{ task.title }}</td>
+        <td><button (click)="displayEditForm(task)" >Edit</button></td>
+      </tr>
+      <tr>
+        <td>Description: {{ task.description }}</td>
+        <td><button (click)="deleteTaskFromService(task)">Delete</button></td>
+      </tr>
+    </table>
+    <div *ngIf="this_task == task" class="right">
+      <h2>Edit A Task</h2>
+      <form (submit)="updateTaskFromService(task)" class="blackbox">
+        <label>Task title:</label>
+        <input type="text" name="this_task.title" [(ngModel)]="this_task.title">
+        <label>Task description:</label>
+        <input type="text" name="this_task.description" [(ngModel)]="this_task.description">
+        <button style="margin: 15px;padding:5px;">Update Task</button>
+      </form>
+    </div>
+
+  </div>
+</div>
+
+<router-outlet></router-outlet> -->
+<div id="wrapper" style="font-size: 16pt;">
+  <div style="text-align:center; margin:10px;">
+    <h1>
+      Restful Tasks API
+    </h1>
+  </div>
+  <input type="text" style="padding:5px;margin:15px;" (keyup)="onNewTaskKey($event)">
+  <button style="padding:5px;margin:5px;"(click)="getTaskFromService()">Get Task by ID</button>
+
+  <ul>
+    <li *ngIf="task">
+      {{task.title}} - {{task.description}}
+    </li>
+  </ul>
+
+  <form  (submit)="onNewTaskSubmit()">
+    Title:
+    <input type="text" style="padding:5px;margin:5px;"  name="newTask.title" [(ngModel)]="newTask.title" /> Description:
+    <input type="text" name="newTask.description" style="padding:5px;margin:5px;" [(ngModel)]="newTask.description" />
+    <input type="submit" value="Create Task" style="padding:5px;margin:5px;" />
+  </form>
+
+  <form *ngIf="editTask._id" (submit)="onEditTaskSubmit()">
+    Title:
+    <input type="text" name="editTask.title"  [(ngModel)]="editTask.title"  /> Description:
+    <input type="text" name="editTask.description" [(ngModel)]="editTask.description" />
+    <input type="submit" value="Edit Task" style="padding:5px;margin:5px;" />
+  </form>
+
+  <h2>Task List </h2>
+  <div *ngFor="let task of tasks" class="task">
+    <h3>{{task.title}}</h3>
+    <p>{{task.description}}</p>
+    <button (click)="onEditTask(task._id, task.title, task.description)" style="padding:5px;margin:5px;">Edit</button>
+    <button (click)="onDeleteTask(task._id)" style="padding:5px;margin:5px;">Delete</button>
+  </div>
+</div>
